@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --porcelain: #fefefe;
+  --dust: #d6cccd;
+  --mauve: #b6a3a5;
+  --clay: #917371;
+  --taupe: #81666b;
+  --wine: #60242c;
+  --linen: #f7f4f4;
+  --ink: #2b1e20;
+
+  --shell-x: 1.25rem;
+  --header-h: 72px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --shell-x: 2.5rem;
+    --header-h: 88px;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --shell-x: 4.5rem;
+  }
+}
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--porcelain);
+    color: var(--ink);
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--wine);
+    color: var(--porcelain);
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--wine);
+    outline-offset: 4px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  /* Горизонтальні поля сторінки — єдина сітка для всіх секцій. */
+  .shell {
+    width: 100%;
+    max-width: theme("maxWidth.shell");
+    margin-inline: auto;
+    padding-inline: var(--shell-x);
+  }
+
+  /* Дрібний трекінговий лейбл — підпис рівня студії. */
+  .label {
+    font-family: var(--font-sans);
+    font-size: 0.66rem;
+    font-weight: 400;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+  }
+
+  /* Заголовки секцій. */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 300;
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+  }
+
+  /* Тонка волосяна лінія — мотив із логотипа. */
+  .hairline {
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(145, 115, 113, 0.45) 12%,
+      rgba(145, 115, 113, 0.45) 88%,
+      transparent
+    );
+  }
+
+  .hairline-v {
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(145, 115, 113, 0.35) 8%,
+      rgba(145, 115, 113, 0.35) 92%,
+      transparent
+    );
+  }
+
+  /* Ледь помітне зерно — прибирає «пластиковість» градієнтів. */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.32;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  }
+
+  /*
+   * Текстури-заглушки замість фото.
+   * Замініть їх реальними знімками через <Frame src="..." /> — розмітка не зміниться.
+   */
+  .tex-1 {
+    background:
+      radial-gradient(120% 90% at 78% 8%, rgba(254, 254, 254, 0.95), transparent 55%),
+      linear-gradient(200deg, #e6dedd 0%, #d6cccd 46%, #b6a3a5 100%);
+  }
+
+  .tex-2 {
+    background:
+      radial-gradient(90% 70% at 20% 90%, rgba(254, 254, 254, 0.7), transparent 60%),
+      linear-gradient(160deg, #b6a3a5 0%, #917371 55%, #81666b 100%);
+  }
+
+  .tex-3 {
+    background:
+      radial-gradient(100% 80% at 85% 100%, rgba(96, 36, 44, 0.55), transparent 60%),
+      linear-gradient(210deg, #d6cccd 0%, #81666b 70%, #60242c 100%);
+  }
+
+  .tex-4 {
+    background:
+      radial-gradient(80% 60% at 15% 12%, rgba(254, 254, 254, 0.92), transparent 58%),
+      linear-gradient(140deg, #f7f4f4 0%, #d6cccd 60%, #917371 100%);
+  }
+
+  .tex-5 {
+    background:
+      radial-gradient(110% 70% at 50% 0%, rgba(254, 254, 254, 0.8), transparent 62%),
+      linear-gradient(180deg, #d6cccd 0%, #b6a3a5 48%, #60242c 130%);
+  }
+
+  /* М'яке світло «з вікна» поверх текстури. */
+  .window-light {
+    background: linear-gradient(
+      108deg,
+      rgba(254, 254, 254, 0.55) 0%,
+      rgba(254, 254, 254, 0) 34%,
+      rgba(254, 254, 254, 0) 66%,
+      rgba(254, 254, 254, 0.22) 100%
+    );
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Горизонтальний скрол без смуги — для стрічки матеріалів. */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
