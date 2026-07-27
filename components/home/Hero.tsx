@@ -133,7 +133,7 @@ export default function Hero() {
               <div className="absolute -bottom-7 -left-7 max-w-[15rem] bg-porcelain px-6 py-5 shadow-soft">
                 <span className="label text-clay">Studio Design</span>
                 <p className="mt-2 font-display text-xl leading-snug text-ink">
-                  Від планування до готового інтер'єру
+                  Від планування до готового Інтер&apos;єру
                 </p>
               </div>
             </div>

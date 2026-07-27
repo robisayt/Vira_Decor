@@ -23,7 +23,7 @@ export default function Directions() {
           </Reveal>
           <Reveal delay={0.08}>
             <h2 className="mt-6 display text-balance text-[clamp(2rem,6.4vw,2.6rem)] lg:text-[clamp(2.4rem,3.2vw,3.4rem)]">
-              П'ять зон відповідальності студії
+              П&apos;ять зон відповідальності студії
             </h2>
           </Reveal>
         </div>
