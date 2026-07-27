@@ -6,10 +6,10 @@ export default function NotFound() {
   return (
     <section className="relative flex min-h-[80svh] items-center bg-porcelain pt-[var(--header-h)]">
       <Image
-        src="/ornament.png"
+        src="/lace.png"
         alt=""
-        width={180}
-        height={480}
+        width={756}
+        height={1782}
         aria-hidden
         className="pointer-events-none absolute right-[8%] top-1/2 h-[50vh] w-auto -translate-y-1/2 opacity-[0.09]"
       />

@@ -36,11 +36,11 @@ export default function Thread() {
           transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
         >
           <Image
-            src="/medallion.png"
+            src="/lace.png"
             alt=""
-            width={143}
-            height={173}
-            className="h-7 w-auto opacity-70"
+            width={756}
+            height={1782}
+            className="h-16 w-auto opacity-60"
           />
         </motion.div>
       </motion.div>

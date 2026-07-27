@@ -6,10 +6,10 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-ink text-porcelain">
       <Image
-        src="/ornament-light.png"
+        src="/lace-light.png"
         alt=""
-        width={180}
-        height={480}
+        width={756}
+        height={1782}
         aria-hidden
         className="pointer-events-none absolute -right-10 -top-16 h-[420px] w-auto opacity-[0.06] md:right-[8%] md:h-[560px]"
       />
@@ -25,7 +25,7 @@ export default function Footer() {
               className="h-11 w-auto md:h-14"
             />
             <p className="mt-7 max-w-sm text-pretty text-porcelain/60">
-              Дизайн інтер&apos;єру, планування, візуалізація та меблі власного виробництва.
+              Дизайн інтер'єру, планування, візуалізація та меблі власного виробництва.
               {" "}
               {site.city} і область, робота онлайн — по всій Україні.
             </p>
@@ -75,7 +75,7 @@ export default function Footer() {
           <span className="label">
             © {new Date().getFullYear()} {site.name} · {site.tagline}
           </span>
-          <span className="label">Створення інтер&apos;єрів під ключ</span>
+          <span className="label">Створення інтер'єрів під ключ</span>
         </div>
       </div>
     </footer>

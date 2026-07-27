@@ -8,10 +8,10 @@ export default function Contact() {
   return (
     <section id="contact" className="relative overflow-hidden bg-wine py-20 text-porcelain md:py-28 lg:py-36">
       <Image
-        src="/ornament-light.png"
+        src="/lace-light.png"
         alt=""
-        width={180}
-        height={480}
+        width={756}
+        height={1782}
         aria-hidden
         className="pointer-events-none absolute right-[-3rem] top-1/2 h-[85%] w-auto -translate-y-1/2 opacity-[0.09] md:right-[6%]"
       />
@@ -25,13 +25,13 @@ export default function Contact() {
       />
 
       <div className="shell relative">
-        <div className="grid gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-20">
+        <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
           <div>
             <Reveal>
               <SectionLabel variant="light">{cta.label}</SectionLabel>
             </Reveal>
             <Reveal delay={0.08}>
-              <h2 className="mt-6 display text-balance text-[clamp(2.3rem,8vw,3.2rem)] lg:text-[clamp(2.8rem,4vw,4.2rem)]">
+              <h2 className="mt-6 display text-balance text-[clamp(2.1rem,7.4vw,2.8rem)] lg:text-[clamp(2.4rem,3.2vw,3.4rem)]">
                 {cta.title}
               </h2>
             </Reveal>
@@ -44,7 +44,7 @@ export default function Contact() {
               <Button
                 href={cta.action.href}
                 external
-                className="mt-9 bg-porcelain text-ink hover:text-porcelain"
+                className="mt-8 w-full bg-porcelain sm:w-auto text-ink hover:text-porcelain"
               >
                 {cta.action.label}
               </Button>

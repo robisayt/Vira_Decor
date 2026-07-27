@@ -47,10 +47,10 @@ export default function Frame({
           />
           {ornament && (
             <Image
-              src="/ornament-light.png"
+              src="/lace-light.png"
               alt=""
-              width={180}
-              height={480}
+              width={756}
+              height={1782}
               aria-hidden
               className="absolute -right-6 top-1/2 h-[78%] w-auto -translate-y-1/2 opacity-25 mix-blend-overlay"
             />

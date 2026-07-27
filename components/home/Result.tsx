@@ -5,7 +5,7 @@ import { result } from "@/content/site";
 
 export default function Result() {
   return (
-    <section id="result" className="relative bg-linen py-20 md:py-28 lg:py-36">
+    <section id="result" className="relative bg-linen py-14 md:py-20 lg:py-24">
       <div className="shell">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-16">
           <div>

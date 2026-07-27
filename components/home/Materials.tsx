@@ -1,3 +1,4 @@
+import Divider from "@/components/ui/Divider";
 import Frame from "@/components/ui/Frame";
 import Reveal from "@/components/ui/Reveal";
 import SectionLabel from "@/components/ui/SectionLabel";
@@ -5,15 +6,17 @@ import { materials } from "@/content/site";
 
 export default function Materials() {
   return (
-    <section className="relative overflow-hidden bg-porcelain py-20 md:py-28 lg:py-36">
+    <section className="relative overflow-hidden bg-porcelain py-14 md:py-20 lg:py-24">
       <div className="shell">
+        <Divider className="mb-12 md:mb-16" />
+
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">
             <Reveal>
               <SectionLabel>{materials.label}</SectionLabel>
             </Reveal>
             <Reveal delay={0.08}>
-              <h2 className="mt-6 display text-balance text-[clamp(2rem,6.4vw,2.6rem)] lg:text-[clamp(2.4rem,3.2vw,3.4rem)]">
+              <h2 className="mt-6 display text-balance text-[clamp(1.9rem,6.2vw,2.4rem)] lg:text-[clamp(2.1rem,2.7vw,2.9rem)]">
                 {materials.title}
               </h2>
             </Reveal>
@@ -26,7 +29,7 @@ export default function Materials() {
 
       {/* Стрічка з горизонтальним скролом — на телефоні гортається пальцем */}
       <Reveal delay={0.1}>
-        <div className="no-scrollbar mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-[var(--shell-x)] pb-4 md:mt-16 md:gap-6">
+        <div className="no-scrollbar mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-[var(--shell-x)] pb-4 md:mt-12 md:gap-6">
           {materials.items.map((item) => (
             <article
               key={item.name}

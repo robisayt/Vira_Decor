@@ -13,7 +13,7 @@ type ButtonProps = {
 };
 
 const base =
-  "group relative inline-flex items-center justify-center gap-3 overflow-hidden px-7 py-4 label transition-colors duration-500 ease-silk";
+  "group relative inline-flex min-h-[54px] items-center justify-center gap-3 overflow-hidden px-7 py-4 label transition-colors duration-500 ease-silk md:min-h-0";
 
 const styles: Record<Variant, string> = {
   solid: "bg-wine text-porcelain",

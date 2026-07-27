@@ -8,10 +8,10 @@ export default function Principles() {
   return (
     <section className="relative overflow-hidden bg-ink py-20 text-porcelain md:py-28 lg:py-36">
       <Image
-        src="/ornament-light.png"
+        src="/lace-light.png"
         alt=""
-        width={180}
-        height={480}
+        width={756}
+        height={1782}
         aria-hidden
         className="pointer-events-none absolute -left-12 top-1/2 h-[70%] w-auto -translate-y-1/2 opacity-[0.07] lg:left-[6%]"
       />
@@ -22,7 +22,7 @@ export default function Principles() {
             <SectionLabel variant="light">{principles.label}</SectionLabel>
           </Reveal>
           <Reveal delay={0.08}>
-            <h2 className="mt-6 display text-balance text-[clamp(2rem,6.4vw,2.6rem)] lg:text-[clamp(2.4rem,3.2vw,3.4rem)]">
+            <h2 className="mt-6 display text-balance text-[clamp(1.9rem,6.2vw,2.4rem)] lg:text-[clamp(2.1rem,2.7vw,2.9rem)]">
               {principles.title}
             </h2>
           </Reveal>

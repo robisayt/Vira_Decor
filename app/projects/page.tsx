@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-porcelain pt-[calc(var(--header-h)+3.5rem)] md:pt-[calc(var(--header-h)+5rem)]">
+      <section className="relative overflow-hidden bg-porcelain pt-[calc(var(--header-h)+2.5rem)] md:pt-[calc(var(--header-h)+3.5rem)]">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -26,10 +26,10 @@ export default function ProjectsPage() {
           }}
         />
         <Image
-          src="/ornament.png"
+          src="/lace.png"
           alt=""
-          width={180}
-          height={480}
+          width={756}
+          height={1782}
           aria-hidden
           className="pointer-events-none absolute -right-10 top-10 h-[46vh] w-auto opacity-[0.1] md:right-[6%]"
         />
@@ -46,17 +46,17 @@ export default function ProjectsPage() {
           </Reveal>
 
           <Reveal delay={0.14}>
-            <p className="mt-7 max-w-lg text-pretty leading-relaxed text-taupe md:text-lg">
+            <p className="mt-6 max-w-lg text-pretty leading-relaxed text-taupe md:text-lg">
               Квартири, будинки й окремі кімнати. У кожному кейсі — планування, дизайн,
               візуалізація та меблі, виготовлені під розмір простору.
             </p>
           </Reveal>
 
-          <Divider className="mt-14 md:mt-20" />
+          <Divider className="mt-10 md:mt-14" />
         </div>
       </section>
 
-      <section className="bg-porcelain pb-20 pt-12 md:pb-28 md:pt-16">
+      <section className="bg-porcelain pb-14 pt-10 md:pb-20 md:pt-12">
         <div className="shell">
           <ProjectsGrid />
         </div>

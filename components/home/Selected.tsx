@@ -1,4 +1,5 @@
 import Button from "@/components/ui/Button";
+import Divider from "@/components/ui/Divider";
 import Reveal from "@/components/ui/Reveal";
 import SectionLabel from "@/components/ui/SectionLabel";
 import ProjectCard from "@/components/projects/ProjectCard";
@@ -6,15 +7,17 @@ import { featuredProjects } from "@/content/projects";
 
 export default function Selected() {
   return (
-    <section className="relative bg-porcelain py-20 md:py-28 lg:py-36">
+    <section className="relative bg-porcelain py-14 md:py-20 lg:py-24">
       <div className="shell">
+        <Divider className="mb-12 md:mb-16" />
+
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">
             <Reveal>
               <SectionLabel>Обрані роботи</SectionLabel>
             </Reveal>
             <Reveal delay={0.08}>
-              <h2 className="mt-6 display text-balance text-[clamp(2rem,6.4vw,2.6rem)] lg:text-[clamp(2.4rem,3.2vw,3.4rem)]">
+              <h2 className="mt-6 display text-balance text-[clamp(1.9rem,6.2vw,2.4rem)] lg:text-[clamp(2.1rem,2.7vw,2.9rem)]">
                 Простори, які ми вже прожили разом із клієнтами
               </h2>
             </Reveal>
@@ -26,7 +29,7 @@ export default function Selected() {
           </Reveal>
         </div>
 
-        <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+        <div className="mt-10 grid gap-8 md:mt-12 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {featuredProjects.map((project, index) => (
             <Reveal
               key={project.slug}

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import BeforeAfter from "@/components/ui/BeforeAfter";
 import Button from "@/components/ui/Button";
 import Divider from "@/components/ui/Divider";
 import Frame from "@/components/ui/Frame";
@@ -90,7 +89,7 @@ export default function ProjectPage({ params }: Params) {
         </div>
       </section>
 
-      <section className="bg-porcelain py-16 md:py-24">
+      <section className="bg-porcelain py-12 md:py-16">
         <div className="shell grid gap-12 lg:grid-cols-[1fr_0.8fr] lg:gap-20">
           <div>
             <Reveal>
@@ -138,7 +137,7 @@ export default function ProjectPage({ params }: Params) {
 
       {/* Галерея — коли з'являться фото, додайте src у content/projects.ts */}
       {project.gallery && project.gallery.length > 0 && (
-        <section className="bg-linen py-16 md:py-24">
+        <section className="bg-linen py-12 md:py-16">
           <div className="shell">
             <Reveal>
               <SectionLabel>Галерея</SectionLabel>
@@ -167,27 +166,11 @@ export default function ProjectPage({ params }: Params) {
         </section>
       )}
 
-      <section className="bg-porcelain py-16 md:py-24">
+      <section className="bg-porcelain py-12 md:py-16">
         <div className="shell">
-          <Reveal>
-            <SectionLabel>Трансформація</SectionLabel>
-            <h2 className="mt-6 display text-[clamp(1.9rem,6vw,2.4rem)]">
-              Планування і реалізація поруч
-            </h2>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <BeforeAfter
-              className="mt-8 aspect-[4/5] w-full shadow-soft sm:aspect-[16/9]"
-              beforeTex="tex-2"
-              afterTex={project.tex}
-              beforeLabel="Планування"
-              afterLabel="Реалізація"
-            />
-          </Reveal>
+          <Divider className="mb-12 md:mb-16" />
 
-          <Divider className="mt-16 md:mt-20" />
-
-          <div className="mt-12 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <span className="label text-clay/70">Наступний проєкт</span>
               <p className="mt-3 display text-[clamp(1.8rem,6vw,2.4rem)]">{next.title}</p>
