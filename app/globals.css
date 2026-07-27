@@ -13,13 +13,13 @@
   --ink: #2b1e20;
 
   --shell-x: 1.25rem;
-  --header-h: 72px;
+  --header-h: 80px;
 }
 
 @media (min-width: 768px) {
   :root {
     --shell-x: 2.5rem;
-    --header-h: 88px;
+    --header-h: 92px;
   }
 }
 
@@ -64,6 +64,12 @@
     font-weight: 300;
     letter-spacing: -0.01em;
   }
+
+  /* Щоб фіксована шапка не перекривала секцію при переході за якорем. */
+  section[id],
+  [id]:target {
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+  }
 }
 
 @layer components {
@@ -79,8 +85,9 @@
   .label {
     font-family: var(--font-sans);
     font-size: 0.66rem;
-    font-weight: 400;
-    letter-spacing: 0.28em;
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    line-height: 1.55;
     text-transform: uppercase;
   }
 

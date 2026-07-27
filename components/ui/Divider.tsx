@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Picture from "@/components/ui/Picture";
 import { cn } from "@/lib/utils";
 
 /**
@@ -15,17 +15,17 @@ export default function Divider({
   size?: "sm" | "md";
 }) {
   return (
-    <div className={cn("flex items-center gap-5 md:gap-8", className)} aria-hidden>
+    <div className={cn("flex items-center gap-4 md:gap-8", className)} aria-hidden>
       <span className={cn("h-px flex-1", variant === "light" ? "bg-porcelain/25" : "hairline")} />
-      <Image
-        src={variant === "light" ? "/lace-h-light.png" : "/lace-h.png"}
+      <Picture
+        src={variant === "light" ? "/lace-h-light-sm.png" : "/lace-h-sm.png"}
         alt=""
-        width={1782}
-        height={756}
+        width={448}
+        height={190}
         className={cn(
           "w-auto",
-          size === "sm" ? "h-6 md:h-7" : "h-8 md:h-11",
-          variant === "light" ? "opacity-70" : "opacity-60",
+          size === "sm" ? "h-9 md:h-8" : "h-12 md:h-12",
+          variant === "light" ? "opacity-75" : "opacity-65",
         )}
       />
       <span className={cn("h-px flex-1", variant === "light" ? "bg-porcelain/25" : "hairline")} />

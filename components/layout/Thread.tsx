@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Picture from "@/components/ui/Picture";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 /**
@@ -35,11 +35,11 @@ export default function Thread() {
           animate={{ rotate: [0, 2, 0, -2, 0] }}
           transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
         >
-          <Image
-            src="/lace.png"
+          <Picture
+            src="/lace-v-sm.png"
             alt=""
-            width={756}
-            height={1782}
+            width={119}
+            height={280}
             className="h-16 w-auto opacity-60"
           />
         </motion.div>

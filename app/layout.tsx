@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Jost } from "next/font/google";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Thread from "@/components/layout/Thread";
@@ -7,19 +7,27 @@ import ScrollToTop from "@/components/ui/ScrollToTop";
 import { site } from "@/content/site";
 import "./globals.css";
 
-/** Дисплейний шрифт — високий контраст, як у логотипі. */
+/**
+ * Дисплейний шрифт — високий контраст, як у логотипі. Основа фірмової типографіки:
+ * заголовки, цифри, назви проєктів, пункти меню.
+ */
 const display = Cormorant_Garamond({
   subsets: ["latin", "cyrillic"],
-  weight: ["300", "400", "500"],
+  weight: ["300", "400", "500", "600"],
   style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
 });
 
-/** Геометричний гротеск — для тексту, лейблів і кнопок. */
-const sans = Jost({
+/**
+ * Текст, лейбли, кнопки.
+ * Manrope замість Jost: у Jost кирилиця неповна — і, ї, є, ґ підставлялися
+ * із системного фолбеку й виглядали жирнішими за решту літер. У Manrope
+ * кирилиця рідна для сімейства, українські знаки намальовані в тій самій вазі.
+ */
+const sans = Manrope({
   subsets: ["latin", "cyrillic"],
-  weight: ["200", "300", "400", "500"],
+  weight: ["300", "400", "500", "600"],
   variable: "--font-sans",
   display: "swap",
 });

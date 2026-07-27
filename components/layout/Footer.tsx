@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Picture from "@/components/ui/Picture";
 import { contactList, nav, site } from "@/content/site";
 
 export default function Footer() {
@@ -8,8 +9,8 @@ export default function Footer() {
       <Image
         src="/lace-light.png"
         alt=""
-        width={756}
-        height={1782}
+        width={475}
+        height={1120}
         aria-hidden
         className="pointer-events-none absolute -right-10 -top-16 h-[420px] w-auto opacity-[0.06] md:right-[8%] md:h-[560px]"
       />
@@ -17,12 +18,13 @@ export default function Footer() {
       <div className="shell relative py-16 md:py-24">
         <div className="grid gap-12 md:grid-cols-[1.1fr_1fr] md:gap-16">
           <div>
-            <Image
+            <Picture
               src="/logo-light.png"
+              srcMobile="/logo-light-sm.png"
               alt={site.name}
-              width={1136}
-              height={599}
-              className="h-11 w-auto md:h-14"
+              width={1482}
+              height={782}
+              className="h-14 w-auto md:h-16"
             />
             <p className="mt-7 max-w-sm text-pretty text-porcelain/60">
               Дизайн інтер'єру, планування, візуалізація та меблі власного виробництва.

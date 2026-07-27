@@ -10,8 +10,8 @@ export default function Principles() {
       <Image
         src="/lace-light.png"
         alt=""
-        width={756}
-        height={1782}
+        width={475}
+        height={1120}
         aria-hidden
         className="pointer-events-none absolute -left-12 top-1/2 h-[70%] w-auto -translate-y-1/2 opacity-[0.07] lg:left-[6%]"
       />

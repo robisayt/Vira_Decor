@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import Button from "@/components/ui/Button";
+import Picture from "@/components/ui/Picture";
 import Frame from "@/components/ui/Frame";
 import { hero, site } from "@/content/site";
 import { silk } from "@/lib/motion";
@@ -48,8 +49,8 @@ export default function Hero() {
         <Image
           src="/lace.png"
           alt=""
-          width={756}
-          height={1782}
+          width={475}
+          height={1120}
           priority
           className="h-[62vh] w-auto animate-drift"
         />
@@ -64,13 +65,14 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: silk, delay: 0.1 }}
             >
-              <Image
+              <Picture
                 src="/logo.png"
+                srcMobile="/logo-sm.png"
                 alt={`${site.name} — ${site.tagline}`}
                 width={1482}
                 height={782}
                 priority
-                className="h-auto w-[84%] max-w-[320px] md:max-w-[400px] lg:max-w-[440px]"
+                className="h-auto w-[92%] max-w-[360px] md:max-w-[400px] lg:max-w-[440px]"
               />
             </motion.div>
 
@@ -155,11 +157,16 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 1.1 }}
           className="mt-8 border-t border-clay/20 pt-5"
         >
-          <ul className="grid grid-cols-3 gap-3">
+          <ul className="grid grid-cols-3 gap-2 md:gap-4">
             {hero.marks.map((mark) => (
               <li key={mark.value} className="min-w-0">
-                <p className="font-display text-base text-ink md:text-xl">{mark.value}</p>
-                <p className="mt-1 label text-clay/80">{mark.note}</p>
+                <p className="font-display text-[1.05rem] leading-tight text-ink md:text-xl">
+                  {mark.value}
+                </p>
+                {/* нерозривний пробіл у тексті тримає «стиль» на окремому рядку */}
+                <p className="mt-1.5 text-[0.6rem] uppercase leading-[1.6] tracking-[0.16em] text-clay/80 md:label md:mt-2">
+                  {mark.note}
+                </p>
               </li>
             ))}
           </ul>

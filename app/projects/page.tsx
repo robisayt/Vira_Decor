@@ -28,8 +28,8 @@ export default function ProjectsPage() {
         <Image
           src="/lace.png"
           alt=""
-          width={756}
-          height={1782}
+          width={475}
+          height={1120}
           aria-hidden
           className="pointer-events-none absolute -right-10 top-10 h-[46vh] w-auto opacity-[0.1] md:right-[6%]"
         />

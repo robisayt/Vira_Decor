@@ -57,9 +57,9 @@ export const hero = {
   primary: { label: "Дивитись проєкти", href: "/projects" },
   secondary: { label: "Обговорити проєкт", href: "#contact" },
   marks: [
-    { value: "Дизайн", note: "концепція і стиль" },
-    { value: "Планування", note: "ергономіка простору" },
-    { value: "Меблі", note: "власне виробництво" },
+    { value: "Дизайн", note: "концепція\u00A0і стиль" },
+    { value: "Планування", note: "ергономіка\u00A0простору" },
+    { value: "Меблі", note: "власне\u00A0виробництво" },
   ],
 };
 

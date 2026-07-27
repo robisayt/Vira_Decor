@@ -49,8 +49,8 @@ export default function Frame({
             <Image
               src="/lace-light.png"
               alt=""
-              width={756}
-              height={1782}
+              width={475}
+              height={1120}
               aria-hidden
               className="absolute -right-6 top-1/2 h-[78%] w-auto -translate-y-1/2 opacity-25 mix-blend-overlay"
             />

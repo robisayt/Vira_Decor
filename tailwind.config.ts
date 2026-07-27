@@ -21,8 +21,8 @@ const config: Config = {
         ink: "#2B1E20",
       },
       fontFamily: {
-        display: ["var(--font-display)", "Georgia", "serif"],
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "Cormorant Garamond", "Georgia", "serif"],
+        sans: ["var(--font-sans)", "Manrope", "system-ui", "Segoe UI", "sans-serif"],
       },
       letterSpacing: {
         label: "0.28em",

@@ -35,10 +35,12 @@ export default function ProjectPage({ params }: Params) {
   const facts = [
     { label: "Тип об'єкта", value: project.category },
     { label: "Площа", value: project.area },
+    project.rooms ? { label: "Кімнати", value: project.rooms } : null,
+    project.levels ? { label: "Рівні", value: project.levels } : null,
     { label: "Локація", value: project.location },
     { label: "Рік", value: project.year },
     { label: "Статус", value: project.status },
-  ];
+  ].filter(Boolean) as { label: string; value: string }[];
 
   return (
     <>
@@ -118,15 +120,28 @@ export default function ProjectPage({ params }: Params) {
 
             <Reveal delay={0.08}>
               <span className="label text-clay/70">Палітра проєкту</span>
-              <ul className="mt-5 flex flex-wrap gap-3">
+              <ul className="mt-5 border-t border-clay/25">
                 {project.palette.map((color) => (
-                  <li key={color.hex} className="flex items-center gap-2.5">
+                  <li
+                    key={color.hex}
+                    className="flex items-start gap-4 border-b border-clay/25 py-4"
+                  >
                     <span
                       aria-hidden
-                      className="h-8 w-8 border border-clay/25"
+                      className="mt-0.5 h-10 w-10 shrink-0 border border-clay/25"
                       style={{ backgroundColor: color.hex }}
                     />
-                    <span className="label text-taupe">{color.name}</span>
+                    <div className="min-w-0">
+                      <p className="flex flex-wrap items-baseline gap-x-3">
+                        <span className="font-display text-lg text-ink">{color.name}</span>
+                        <span className="label text-clay/60">{color.hex}</span>
+                      </p>
+                      {color.note && (
+                        <p className="mt-1.5 text-pretty text-sm leading-relaxed text-taupe">
+                          {color.note}
+                        </p>
+                      )}
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -149,16 +164,26 @@ export default function ProjectPage({ params }: Params) {
                   as="figure"
                   key={shot.caption}
                   delay={i * 0.06}
-                  className={i % 3 === 0 ? "md:col-span-2" : undefined}
+                  className={
+                    (shot.span ?? (i % 3 === 0 ? "full" : "half")) === "full"
+                      ? "md:col-span-2"
+                      : undefined
+                  }
                 >
                   <Frame
                     src={shot.src}
                     alt={shot.caption}
                     tex={shot.tex}
-                    className={i % 3 === 0 ? "aspect-[16/9] w-full" : "aspect-[4/5] w-full"}
+                    className={
+                      (shot.span ?? (i % 3 === 0 ? "full" : "half")) === "full"
+                        ? "aspect-[16/10] w-full"
+                        : "aspect-[4/3] w-full"
+                    }
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
-                  <figcaption className="mt-3 label text-clay/70">{shot.caption}</figcaption>
+                  <figcaption className="mt-3 max-w-xl text-pretty text-sm leading-relaxed text-taupe">
+                    {shot.caption}
+                  </figcaption>
                 </Reveal>
               ))}
             </div>
