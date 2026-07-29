@@ -36,7 +36,17 @@ export default function Selected() {
               delay={index * 0.08}
               className={index === 0 ? "md:col-span-2 lg:col-span-1" : undefined}
             >
-              <ProjectCard project={project} />
+              {/* Перша картка на планшеті займає два стовпці — і про це треба
+                  сказати next/image, інакше вона отримує кадр удвічі вужчий,
+                  ніж потрібно, і виглядає м'якшою за сусідні. */}
+              <ProjectCard
+                project={project}
+                sizes={
+                  index === 0
+                    ? "(max-width: 640px) 150vw, (max-width: 1024px) 150vw, 50vw"
+                    : undefined
+                }
+              />
             </Reveal>
           ))}
         </div>

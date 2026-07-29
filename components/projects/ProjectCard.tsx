@@ -7,10 +7,32 @@ type ProjectCardProps = {
   project: Project;
   /** Велика картка на десктопі — для перших кейсів у сітці. */
   wide?: boolean;
+  /**
+   * Ширина плитки для next/image. Передається лише там, де картка займає
+   * більше місця, ніж у звичайній сітці (наприклад, md:col-span-2 на головній).
+   */
+  sizes?: string;
   className?: string;
 };
 
-export default function ProjectCard({ project, wide = false, className }: ProjectCardProps) {
+/**
+ * Чому sizes більший за саму плитку.
+ *
+ * Обкладинки кейсів горизонтальні (16:9 … 3:2), а рамка вертикальна (4:5).
+ * object-cover масштабує кадр по ВИСОТІ, тому картинці треба бути приблизно
+ * в 1,5 раза ширшою за плитку — інакше браузер тягне те, що прийшло, і
+ * зображення м'якшає. Раніше тут стояла ширина самої плитки (33vw), звідси
+ * й було мило на обраних роботах.
+ */
+const COVER_SIZES = "(max-width: 640px) 150vw, (max-width: 1024px) 75vw, 50vw";
+const COVER_SIZES_WIDE = "(max-width: 1024px) 100vw, 60vw";
+
+export default function ProjectCard({
+  project,
+  wide = false,
+  sizes,
+  className,
+}: ProjectCardProps) {
   return (
     <article className={cn("group", className)}>
       <Link href={`/projects/${project.slug}`} className="block outline-none">
@@ -20,7 +42,8 @@ export default function ProjectCard({ project, wide = false, className }: Projec
             alt={project.title}
             tex={project.tex}
             className={cn("w-full", wide ? "aspect-[16/11]" : "aspect-[4/5]")}
-            sizes={wide ? "(max-width: 1024px) 100vw, 60vw" : "(max-width: 640px) 100vw, 33vw"}
+            sizes={sizes ?? (wide ? COVER_SIZES_WIDE : COVER_SIZES)}
+            quality={95}
           />
 
           {/* Затемнення і підпис, що виїжджає */}

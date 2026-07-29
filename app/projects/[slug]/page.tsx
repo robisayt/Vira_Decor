@@ -11,6 +11,15 @@ import { getProject, projects } from "@/content/projects";
 
 type Params = { params: { slug: string } };
 
+/** Пропорції рамки для кадрів галереї — підбираються під сам знімок. */
+const RATIO: Record<string, string> = {
+  wide: "aspect-[16/9]",
+  classic: "aspect-[3/2]",
+  landscape: "aspect-[4/3]",
+  square: "aspect-square",
+  portrait: "aspect-[4/5]",
+};
+
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
 }
@@ -84,7 +93,8 @@ export default function ProjectPage({ params }: Params) {
               alt={project.title}
               tex={project.tex}
               className="aspect-[4/5] w-full shadow-soft sm:aspect-[16/10]"
-              sizes="100vw"
+              sizes="(max-width: 768px) 100vw, (max-width: 1536px) 92vw, 1300px"
+              quality={94}
               priority
             />
           </Reveal>
@@ -106,7 +116,7 @@ export default function ProjectPage({ params }: Params) {
             </div>
           </div>
 
-          <div className="space-y-10">
+          <div>
             <Reveal>
               <span className="label text-clay/70">Обсяг робіт</span>
               <ul className="mt-5 border-t border-clay/25">
@@ -118,34 +128,6 @@ export default function ProjectPage({ params }: Params) {
               </ul>
             </Reveal>
 
-            <Reveal delay={0.08}>
-              <span className="label text-clay/70">Палітра проєкту</span>
-              <ul className="mt-5 border-t border-clay/25">
-                {project.palette.map((color) => (
-                  <li
-                    key={color.hex}
-                    className="flex items-start gap-4 border-b border-clay/25 py-4"
-                  >
-                    <span
-                      aria-hidden
-                      className="mt-0.5 h-10 w-10 shrink-0 border border-clay/25"
-                      style={{ backgroundColor: color.hex }}
-                    />
-                    <div className="min-w-0">
-                      <p className="flex flex-wrap items-baseline gap-x-3">
-                        <span className="font-display text-lg text-ink">{color.name}</span>
-                        <span className="label text-clay/60">{color.hex}</span>
-                      </p>
-                      {color.note && (
-                        <p className="mt-1.5 text-pretty text-sm leading-relaxed text-taupe">
-                          {color.note}
-                        </p>
-                      )}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
           </div>
         </div>
       </section>
@@ -158,34 +140,37 @@ export default function ProjectPage({ params }: Params) {
               <SectionLabel>Галерея</SectionLabel>
             </Reveal>
 
-            <div className="mt-10 grid gap-6 md:mt-14 md:grid-cols-2">
-              {project.gallery.map((shot, i) => (
-                <Reveal
-                  as="figure"
-                  key={shot.caption}
-                  delay={i * 0.06}
-                  className={
-                    (shot.span ?? (i % 3 === 0 ? "full" : "half")) === "full"
-                      ? "md:col-span-2"
-                      : undefined
-                  }
-                >
-                  <Frame
-                    src={shot.src}
-                    alt={shot.caption}
-                    tex={shot.tex}
-                    className={
-                      (shot.span ?? (i % 3 === 0 ? "full" : "half")) === "full"
-                        ? "aspect-[16/10] w-full"
-                        : "aspect-[4/3] w-full"
-                    }
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <figcaption className="mt-3 max-w-xl text-pretty text-sm leading-relaxed text-taupe">
-                    {shot.caption}
-                  </figcaption>
-                </Reveal>
-              ))}
+            <div className="mt-10 grid items-start gap-6 md:mt-14 md:grid-cols-2 md:gap-8">
+              {project.gallery.map((shot, i) => {
+                const full = (shot.span ?? (i % 3 === 0 ? "full" : "half")) === "full";
+                const ratio =
+                  RATIO[shot.ratio ?? (full ? "wide" : "landscape")] ?? RATIO.landscape;
+
+                return (
+                  <Reveal
+                    as="figure"
+                    key={shot.caption}
+                    delay={i * 0.06}
+                    className={full ? "md:col-span-2" : undefined}
+                  >
+                    <Frame
+                      src={shot.src}
+                      alt={shot.caption}
+                      tex={shot.tex}
+                      className={`${ratio} w-full`}
+                      sizes={
+                        full
+                          ? "(max-width: 768px) 100vw, (max-width: 1536px) 92vw, 1300px"
+                          : "(max-width: 768px) 100vw, (max-width: 1536px) 46vw, 640px"
+                      }
+                      quality={94}
+                    />
+                    <figcaption className="mt-3 max-w-xl text-pretty text-sm leading-relaxed text-taupe">
+                      {shot.caption}
+                    </figcaption>
+                  </Reveal>
+                );
+              })}
             </div>
           </div>
         </section>

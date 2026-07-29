@@ -136,9 +136,16 @@ export default function Hero() {
             <div className="group relative ml-auto aspect-[4/5] w-full max-w-[23rem]">
               <div aria-hidden className="absolute -left-7 -top-7 h-full w-full border border-clay/30" />
               <Frame
-                tex="tex-1"
+                src="/home/hero.jpg"
+                alt="Інтер'єр від Vira Decor"
+                position="left bottom"
                 className="absolute inset-0 shadow-soft"
-                sizes="(max-width: 1024px) 0px, 23rem"
+                /* Картка існує лише від lg і завжди має ширину 23rem (368 px).
+                   Раніше тут стояло "(max-width: 1024px) 0px, 23rem": нульова
+                   довжина в sizes — некоректне значення, через неї браузер міг
+                   узяти найменший кадр із srcset. */
+                sizes="23rem"
+                quality={95}
                 priority
               />
               <div className="absolute -bottom-6 -left-6 max-w-[14rem] bg-porcelain px-5 py-4 shadow-soft">

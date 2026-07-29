@@ -4,6 +4,12 @@ import Reveal from "@/components/ui/Reveal";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { materials } from "@/content/site";
 
+const BOX: Record<string, string> = {
+  square: "aspect-square",
+  tall: "aspect-[4/5]",
+  wide: "aspect-[16/10]",
+};
+
 export default function Materials() {
   return (
     <section className="relative overflow-hidden bg-porcelain py-14 md:py-20 lg:py-24">
@@ -25,36 +31,33 @@ export default function Materials() {
             <p className="max-w-sm text-pretty leading-relaxed text-taupe">{materials.lead}</p>
           </Reveal>
         </div>
-      </div>
 
-      {/* Стрічка з горизонтальним скролом — на телефоні гортається пальцем */}
-      <Reveal delay={0.1}>
-        <div className="no-scrollbar mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-[var(--shell-x)] pb-4 md:mt-12 md:gap-6">
-          {materials.items.map((item) => (
-            <article
-              key={item.name}
-              className="group w-[74vw] shrink-0 snap-start sm:w-[46vw] lg:w-[24vw]"
+        {/* Сітка мудбордів: перший кадр ширший, решта у три колонки. */}
+        <div className="mt-10 grid grid-cols-2 gap-4 md:mt-12 md:grid-cols-4 md:gap-6">
+          {materials.items.map((item, index) => (
+            <Reveal
+              as="figure"
+              key={item.src}
+              delay={index * 0.07}
             >
-              <Frame
-                tex={item.tex}
-                className="aspect-[3/4] w-full"
-                sizes="(max-width: 640px) 74vw, (max-width: 1024px) 46vw, 24vw"
-              />
-              <div className="mt-4 flex items-center gap-3">
-                <span
-                  aria-hidden
-                  className="h-3 w-3 rounded-full border border-clay/30"
-                  style={{ backgroundColor: item.swatch }}
+              <div className="group relative">
+                <Frame
+                  src={item.src}
+                  alt={item.caption}
+                  className={`${BOX[item.ratio] ?? BOX.tall} w-full`}
+                  position="center"
+                  /* Мудборди вертикальніші за рамку 4:5, тому object-cover
+                     масштабує їх по висоті: запит має бути на ~20% ширший за
+                     саму плитку, інакше кадр добивається масштабуванням. */
+                  sizes="(max-width: 768px) 62vw, 30vw"
+                  quality={95}
                 />
-                <div className="min-w-0">
-                  <h3 className="font-display text-lg text-ink">{item.name}</h3>
-                  <p className="label mt-0.5 text-clay/70">{item.note}</p>
-                </div>
               </div>
-            </article>
+              <figcaption className="mt-3 label text-clay/75">{item.caption}</figcaption>
+            </Reveal>
           ))}
         </div>
-      </Reveal>
+      </div>
     </section>
   );
 }

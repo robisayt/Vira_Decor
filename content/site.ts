@@ -15,7 +15,7 @@ export const site = {
 export const nav = [
   { label: "Головна", href: "/" },
   { label: "Проєкти", href: "/projects" },
-  { label: "Напрями", href: "/#directions" },
+  { label: "Меблі", href: "/mebli" },
   { label: "Контакти", href: "/#contact" },
 ];
 
@@ -153,13 +153,29 @@ export const materials = {
   label: "Матеріали і світло",
   title: "Дороге відчуття народжується з фактури",
   lead:
-    "Ми підбираємо матеріали в парах: тепле дерево з холодним каменем, матовий тиньк із металевим блиском, щільний текстиль із тонким мереживом.",
+    "Ми підбираємо матеріали в парах: тепле дерево з холодним каменем, матовий тиньк із металевим блиском, глибокий бордо зі світлим дубом.",
+  // Фото розкладок зразків. Порядок — від світлого й теплого до контрастного.
   items: [
-    { name: "Дуб і горіх", note: "тепло, тактильність", swatch: "#917371", tex: "tex-4" },
-    { name: "Мармур і травертин", note: "спокій, глибина", swatch: "#D6CCCD", tex: "tex-1" },
-    { name: "Матовий тиньк", note: "м'яке світло", swatch: "#B6A3A5", tex: "tex-2" },
-    { name: "Латунь і бронза", note: "деталь і блиск", swatch: "#81666B", tex: "tex-5" },
-    { name: "Текстиль і мереживо", note: "затишок, характер", swatch: "#60242C", tex: "tex-3" },
+    {
+      src: "/materials/moodboard-1.jpg",
+      caption: "Дуб, пудра і рифлений профіль",
+      ratio: "tall" as const,
+    },
+    {
+      src: "/materials/moodboard-2.jpg",
+      caption: "Бордо, графіт і сірий терацо",
+      ratio: "tall" as const,
+    },
+    {
+      src: "/materials/moodboard-3.jpg",
+      caption: "Дерево, камінь і матовий метал",
+      ratio: "tall" as const,
+    },
+    {
+      src: "/materials/moodboard-4.jpg",
+      caption: "Глянець, крихта і світлі фасади",
+      ratio: "tall" as const,
+    },
   ],
 };
 

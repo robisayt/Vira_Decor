@@ -2,14 +2,13 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import Frame from "@/components/ui/Frame";
+import DirectionArt, { type DirectionArtId } from "@/components/illustrations/DirectionArt";
 import Reveal from "@/components/ui/Reveal";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { directions } from "@/content/site";
 import { silk } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
-const textures = ["tex-1", "tex-4", "tex-2", "tex-5", "tex-3"];
 /** Скільки напрямів показуємо на телефоні до натискання «Показати більше». */
 const MOBILE_VISIBLE = 3;
 
@@ -72,13 +71,14 @@ export default function Directions() {
                           <p className="mt-3 label text-clay/70">{direction.detail}</p>
                         </div>
 
-                        {/* Мобільне прев'ю — щоб секція не була просто списком */}
-                        <Frame
-                          tex={textures[index]}
-                          ornament={false}
-                          className="h-[4.5rem] w-[4.5rem] shrink-0 lg:hidden"
-                          sizes="72px"
-                        />
+                        {/* На телефоні — одразу готова ілюстрація, без анімації малювання */}
+                        <span className="sketch-sheet grid h-[6.5rem] w-[6.5rem] shrink-0 place-items-center border border-clay/15 text-clay/90 lg:hidden">
+                          <DirectionArt
+                            id={direction.id as DirectionArtId}
+                            compact
+                            className="p-2"
+                          />
+                        </span>
                       </div>
                     </div>
                   </Reveal>
@@ -106,17 +106,27 @@ export default function Directions() {
 
           <div className="relative hidden lg:block">
             <div className="sticky top-28">
-              <div className="relative aspect-[3/4] w-full overflow-hidden">
+              <div className="sketch-sheet grain relative aspect-square w-full overflow-hidden border border-clay/15">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0"
+                  style={{
+                    background:
+                      "radial-gradient(70% 60% at 50% 10%, rgba(254,254,254,0.75), rgba(254,254,254,0) 72%)",
+                  }}
+                />
                 <AnimatePresence mode="sync">
                   <motion.div
                     key={active}
-                    initial={{ opacity: 0, scale: 1.06 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.9, ease: silk }}
-                    className="absolute inset-0"
+                    transition={{
+                      opacity: { duration: 0.5, ease: silk },
+                    }}
+                    className="absolute inset-0 p-8 text-taupe"
                   >
-                    <Frame tex={textures[active]} className="absolute inset-0" sizes="28vw" />
+                    <DirectionArt id={directions[active].id as DirectionArtId} draw />
                   </motion.div>
                 </AnimatePresence>
               </div>

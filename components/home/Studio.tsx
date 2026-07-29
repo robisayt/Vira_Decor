@@ -14,9 +14,12 @@ export default function Studio() {
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
           <div className="group relative order-2 lg:order-1">
             <Frame
-              tex="tex-4"
-              className="aspect-[4/3] w-full shadow-soft sm:aspect-[4/5]"
+              src="/home/studio.jpg"
+              alt="Салон Vira Decor"
+              position="center"
+              className="aspect-[4/3] w-full shadow-soft sm:aspect-[3/4]"
               sizes="(max-width: 1024px) 100vw, 38vw"
+              quality={95}
             />
             {/* Головна цифра студії — акцент, а не просто підпис */}
             <div className="absolute -bottom-5 left-4 flex items-end gap-3 bg-porcelain px-5 py-4 shadow-soft md:left-6">
